@@ -9,7 +9,8 @@ const TaskSchema = new Schema({
     done: Boolean,
     priority: { type: String, enum: ["Low", "Medium", "High"], required: true },
     created_at: Date,
-    updated_at: Date
+    updated_at: Date,
+    userId: { type: Schema.Types.ObjectId, ref: 'User' }
 });
 
 const dateValidator = (date) => {
@@ -17,4 +18,4 @@ const dateValidator = (date) => {
 }
 TaskSchema.path("deadline").validate(dateValidator);
 
-export default mongoose.model('Task', TaskSchema);
+export default mongoose.model('Task', TaskSchema); 
